@@ -23,10 +23,13 @@ class UI {
 
 	}
 	deleteBook(book){
-		if(book.className === 'delete'){
-			 book.parentElement.parentElement.remove();
+			book.parentElement.parentElement.remove();
 
-		}
+		
+	
+			 
+
+		
 	}
 
 	clearFields(){
@@ -124,11 +127,15 @@ document.getElementById('book-form').addEventListener('submit', function(e){
 	e.preventDefault();
 })
 
-document.querySelector('table').addEventListener('click', function(e){
+document.querySelector('tbody').addEventListener('click', function(e){
       const ui = new UI;
-      ui.deleteBook(e.target);
+      if(e.target.className === 'delete'){
+      	 ui.deleteBook(e.target);
       Store.removeBooks(e.target.parentElement.previousElementSibling.textContent);
       ui.showAlert('Book Removed!', 'error');
+      }
+     
+      
 
 
 	
